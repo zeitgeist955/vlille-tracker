@@ -33,7 +33,7 @@ public class StationService {
         JsonNode rootNode = objectMapper.readTree(responseBody);
 
         JsonNode totalNode = rootNode.at("/total_count");
-        log.debug("Found {} bikes", totalNode.toString());
+        log.debug("Found {} stations", totalNode.toString());
 
         JsonNode resultNode = rootNode.at("/results");
         Station[] stationsArray = objectMapper.treeToValue(resultNode, Station[].class);

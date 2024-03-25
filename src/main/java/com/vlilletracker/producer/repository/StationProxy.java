@@ -16,6 +16,7 @@ public class StationProxy {
     @Autowired
     private CustomProperties customProperties;
 
+    //TODO find more than the first 20 stations - API parameter is limited to 100 but there is currently 289 stations available
     public String getAllStationsInfo() {
         String apiUrl = customProperties.getApiUrl();
 
