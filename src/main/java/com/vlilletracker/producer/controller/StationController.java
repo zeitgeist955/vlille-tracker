@@ -1,6 +1,8 @@
 package com.vlilletracker.producer.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.vlilletracker.producer.kafka.KafkaProducerConfig;
 import com.vlilletracker.producer.model.Station;
 import com.vlilletracker.producer.service.StationService;
@@ -19,12 +21,13 @@ public class StationController {
     KafkaProducerConfig kafkaProducerConfig;
 
     public void produceStationList() throws JsonProcessingException {
+        ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
         List<Station> stationList = stationService.getStationList();
 
-        //TODO proper serialization of object instead of ugly toString
-        stationList.forEach(station ->
-            kafkaProducerConfig.sendMessage(station.toString())
-        );
+        for (Station station : stationList) {
+            //System.out.println(objectWriter.writeValueAsString(station));
+            kafkaProducerConfig.sendMessage(objectWriter.writeValueAsString(station));
+        }
     }
 }
