@@ -1,6 +1,7 @@
 package com.vlilletracker.producer.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.vlilletracker.producer.kafka.KafkaProducerConfig;
 import com.vlilletracker.producer.model.Station;
 import com.vlilletracker.producer.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,16 @@ public class StationController {
     @Autowired
     private StationService stationService;
 
+    @Autowired
+    KafkaProducerConfig kafkaProducerConfig;
+
     public void produceStationList() throws JsonProcessingException {
 
-        //TODO : call this every x time
         List<Station> stationList = stationService.getStationList();
 
-        stationList.forEach(System.out::println);
-
-        //TODO : send station list to kafka producer
+        //TODO proper serialization of object instead of ugly toString
+        stationList.forEach(station ->
+            kafkaProducerConfig.sendMessage(station.toString())
+        );
     }
 }

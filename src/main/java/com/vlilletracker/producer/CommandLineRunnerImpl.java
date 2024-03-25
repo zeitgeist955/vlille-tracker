@@ -24,7 +24,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         log.debug("ping to {}", customProperties.getApiUrl());
 
         try {
-            stationController.produceStationList();
+            stationController.produceStationList(); //TODO : call this every x time
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
