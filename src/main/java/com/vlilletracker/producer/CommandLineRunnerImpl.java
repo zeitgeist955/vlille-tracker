@@ -1,6 +1,7 @@
 package com.vlilletracker.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.vlilletracker.producer.controller.StationController;
 import com.vlilletracker.producer.service.StationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,14 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private CustomProperties customProperties;
 
     @Autowired
-    private StationService stationService;
+    private StationController stationController;
 
     @Override
     public void run(String... args) {
         log.debug("ping to {}", customProperties.getApiUrl());
 
         try {
-            stationService.getStationList().forEach(System.out::println);
+            stationController.produceStationList();
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

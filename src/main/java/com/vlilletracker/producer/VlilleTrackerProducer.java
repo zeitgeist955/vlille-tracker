@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VlilleTrackerApplication {
+public class VlilleTrackerProducer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VlilleTrackerApplication.class, args);
+		SpringApplication.run(VlilleTrackerProducer.class, args);
 	}
 
 }
