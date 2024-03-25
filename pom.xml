@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zg955</groupId>
-	<artifactId>vlille-tracker</artifactId>
+	<artifactId>vlille-tracker-producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>vlille-tracker</name>
 	<description>Test Kafka with VLille Dataset</description>
