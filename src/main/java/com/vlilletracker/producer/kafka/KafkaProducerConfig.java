@@ -49,11 +49,9 @@ public class KafkaProducerConfig {
         CompletableFuture<SendResult<String, String>> future = kafkaTemplate().send(topic, message);
         future.whenComplete((result, ex) -> {
             if (ex == null) {
-                log.debug("Sent message=[" + message +
-                        "] with offset=[" + result.getRecordMetadata().offset() + "]");
+                log.debug("Sent message=[{}] with offset=[{}]", message, result.getRecordMetadata().offset());
             } else {
-                log.error("Unable to send message=[" +
-                        message + "] due to : " + ex.getMessage());
+                log.error("Unable to send message=[{}}] due to : {}", message, ex.getMessage());
             }
         });
     }
