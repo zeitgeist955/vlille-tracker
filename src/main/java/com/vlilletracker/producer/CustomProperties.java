@@ -12,4 +12,6 @@ public class CustomProperties {
     private String apiUrl;
 
     private String applicationDesignation;
+
+    private String maxNumberOfResultPerPing;
 }
