@@ -26,7 +26,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
         try {
             int i = 1;
             while(true) {
-                log.info("Execute request number "+i);
+                log.info("Fetching all stations info for the {} time", i);
                 stationController.produceStationList();
                 i++;
                 Thread.sleep(60000); // Dataset is updated every minute
