@@ -68,16 +68,17 @@ public class StationService {
 
         return new StationsArrayAndTotal(stationsArray, totalNode.asInt());
     }
-}
 
-@Data
-class StationsArrayAndTotal {
-    private Station[] stationArray;
 
-    private int totalCount;
+    @Data
+    private static class StationsArrayAndTotal {
+        private Station[] stationArray;
 
-    public StationsArrayAndTotal(Station[] stationArray, int totalCount) {
-        this.stationArray = stationArray;
-        this.totalCount = totalCount;
+        private int totalCount;
+
+        public StationsArrayAndTotal(Station[] stationArray, int totalCount) {
+            this.stationArray = stationArray;
+            this.totalCount = totalCount;
+        }
     }
 }
