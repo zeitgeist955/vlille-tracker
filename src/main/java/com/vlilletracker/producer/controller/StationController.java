@@ -23,7 +23,7 @@ public class StationController {
     public void produceStationList() throws JsonProcessingException {
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
-        List<Station> stationList = stationService.getStationList();
+        List<Station> stationList = stationService.getAllStationList();
 
         for (Station station : stationList) {
             //System.out.println(objectWriter.writeValueAsString(station));
