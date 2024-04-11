@@ -2,7 +2,6 @@ package com.vlilletracker.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.vlilletracker.producer.controller.StationController;
-import com.vlilletracker.producer.service.StationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

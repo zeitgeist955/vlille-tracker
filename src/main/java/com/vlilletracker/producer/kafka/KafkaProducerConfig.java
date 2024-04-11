@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @Configuration
 public class KafkaProducerConfig {
 
-    @Value(value = "${spring.kafka.bootstrap-servers}") //From app.properties file, but can change depending on local ip ?
+    @Value(value = "${spring.kafka.bootstrap-servers}") //From app.properties file, load from env variable en local ip
     private String bootstrapAddress;
 
     @Value(value = "${kafka.topicName}")
