@@ -22,6 +22,9 @@ public class KafkaProducerConfig {
     @Value(value = "${spring.kafka.bootstrap-servers}") //From app.properties file, but can change depending on local ip ?
     private String bootstrapAddress;
 
+    @Value(value = "${kafka.topicName}")
+    private String kafkaTopicName;
+
     @Bean
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
@@ -43,10 +46,9 @@ public class KafkaProducerConfig {
     }
 
     public void sendMessage(String message) {
-        String topic = "vlille";
-        log.debug("Sending message '{}' to topic '{}'", message, topic);
+        log.debug("Sending message '{}' to topic '{}'", message, kafkaTopicName);
 
-        CompletableFuture<SendResult<String, String>> future = kafkaTemplate().send(topic, message);
+        CompletableFuture<SendResult<String, String>> future = kafkaTemplate().send(kafkaTopicName, message);
         future.whenComplete((result, ex) -> {
             if (ex == null) {
                 log.debug("Sent message=[{}] with offset=[{}]", message, result.getRecordMetadata().offset());
