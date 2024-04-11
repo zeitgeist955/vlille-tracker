@@ -26,7 +26,7 @@ public class StationController {
         List<Station> stationList = stationService.getAllStationList();
 
         for (Station station : stationList) {
-            //System.out.println(objectWriter.writeValueAsString(station));
+            //FIXME fix null key in kafka - is this an issue, can it maybe auto increment ?
             kafkaProducerConfig.sendMessage(objectWriter.writeValueAsString(station));
         }
     }
