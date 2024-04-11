@@ -12,7 +12,7 @@ public class Station {
 
     private String adresse;
 
-    //TODO : enum
+    //TODO : use clean enum ?
     private String commune;
 
     private String etat;
@@ -30,6 +30,6 @@ public class Station {
 
     private Location localisation;
 
-    //TODO date ?
+    //TODO convert to proper date type ?
     private String datemiseajour;
 }
